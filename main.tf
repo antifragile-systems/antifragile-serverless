@@ -28,3 +28,7 @@ data "aws_security_groups" "selected" {
     Name          = "serverless"
   }
 }
+
+data "aws_sns_topic" "selected" {
+  name = var.infrastructure_name
+}

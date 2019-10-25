@@ -9,3 +9,7 @@ output "aws_subnet_ids" {
 output "aws_security_group_ids" {
   value = data.aws_security_groups.selected.ids
 }
+
+output "aws_sns_topic_arn" {
+  value = data.aws_sns_topic.selected.arn
+}
