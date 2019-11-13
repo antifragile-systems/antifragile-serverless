@@ -13,3 +13,7 @@ output "aws_security_group_ids" {
 output "aws_sns_topic_arn" {
   value = data.aws_sns_topic.selected.arn
 }
+
+output "aws_iam_role_name" {
+  value = aws_iam_role.antifragile-serverless.name
+}
