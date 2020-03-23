@@ -3,7 +3,7 @@ terraform {
 }
 
 provider "aws" {
-  version = "2.14.0"
+  version = "2.54.0"
 
   region = var.aws_region
 }
@@ -62,4 +62,21 @@ EOF
 resource "aws_iam_role_policy_attachment" "antifragile-serverless" {
   role       = aws_iam_role.antifragile-serverless.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+}
+
+resource "aws_s3_bucket" "antifragile-serverless" {
+  bucket_prefix = "antifragile-serverless."
+  acl           = "private"
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "aws:kms"
+      }
+    }
+  }
+
+  tags = {
+    IsAntifragile = true
+  }
 }

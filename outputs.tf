@@ -17,3 +17,7 @@ output "aws_sns_topic_arn" {
 output "aws_iam_role_name" {
   value = aws_iam_role.antifragile-serverless.name
 }
+
+output "aws_s3_bucket_id" {
+  value = aws_s3_bucket.antifragile-serverless.id
+}
