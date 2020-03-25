@@ -8,6 +8,20 @@ provider "aws" {
   region = var.aws_region
 }
 
+provider "template" {
+  version = "2.1.2"
+}
+
+data "terraform_remote_state" "infrastructure_state" {
+  backend = "s3"
+
+  config = {
+    region = var.state_aws_region
+    bucket = var.state_aws_s3_bucket
+    key    = "${var.infrastructure_name}.tfstate"
+  }
+}
+
 data "aws_vpc" "selected" {
   tags = {
     Name = var.infrastructure_name

@@ -18,6 +18,6 @@ output "aws_iam_role_name" {
   value = aws_iam_role.antifragile-serverless.name
 }
 
-output "aws_s3_bucket_id" {
-  value = aws_s3_bucket.antifragile-serverless.id
+output "aws_s3_bucket" {
+  value = data.terraform_remote_state.infrastructure_state.outputs.aws_s3_bucket
 }
